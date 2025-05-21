@@ -18,14 +18,9 @@ public class ExamTest {
 
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
-            // Натискаємо "Sign Up with Email"
+            
             StartPage startPage = new StartPage(driver);
             startPage.clickNext();
-
-            // Очікуємо появу поля реєстрації
-            wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    org.openqa.selenium.By.id("signupEmailFullName")
-            ));
 
             RegPage regPage = new RegPage(driver);
 
@@ -40,15 +35,15 @@ public class ExamTest {
 
             Thread.sleep(5000);
 
-            regPage.clickCaptcha();Z
+            regPage.clickCaptcha();
             regPage.clickCreateAccount();
 
-            System.out.println("Форма реєстрації успішно заповнена!");
+            
 
         } catch (Exception e) {
-            System.out.println("Сталася помилка: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         } finally {
-
+            driver.quit();
         }
     }
 }
